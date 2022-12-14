@@ -16,7 +16,7 @@ spec:
         api: external        
     spec:
       containers:
-      - image: trangnd/frontend:v1
+      - image: trangnd/frontend:v2
         name: frontend
         imagePullPolicy: Always          
         ports:
