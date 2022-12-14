@@ -1,0 +1,14 @@
+version: "3"
+services:
+  backend_user:
+    build:
+      context: ./api-user
+    image: api-user
+  backend_feed:
+    build:
+      context: ./api-feed
+    image: api-feed
+  frontend:
+    build:
+      context: ./frontend
+    image: frontend:local
