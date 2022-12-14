@@ -6,7 +6,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    steps:
+    steps:      
+      - name: Add permission
+        run: chmod +x build.sh    
       - uses: actions/checkout@v2
 
       - name: Login to DockerHub
