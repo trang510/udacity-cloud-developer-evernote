@@ -1,7 +1,15 @@
 version: "3"
 services:
+  reverseproxy:
+      image: trangnd/reverseproxy:v1
+      ports:
+          - 8080:8080
+      restart: always
+      depends_on:
+        - backend-user
+        - backend-feed
   backend-user:
-    image: api-user
+    image: trangnd/api-user:v1
     environment:
       POSTGRES_USERNAME: $POSTGRES_USERNAME
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD 
@@ -13,7 +21,7 @@ services:
       JWT_SECRET: $JWT_SECRET
       URL: "http://localhost:8100"
   backend-feed:
-    image: api-feed
+    image: trangnd/api-feed:v1
     volumes:
       - $HOME/.aws:/root/.aws
     environment:
@@ -27,6 +35,6 @@ services:
       JWT_SECRET: $JWT_SECRET
       URL: "http://localhost:8100"
   frontend:
-    image: frontend:local
+    image: trangnd/frontend:v2
     ports:
       - "8100:80"
